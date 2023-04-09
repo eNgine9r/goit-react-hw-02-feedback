@@ -1,4 +1,6 @@
 import React from "react";
+import { Statistics } from './Statistics';
+import { FeedbackOptions } from './FeedbackOptions';
 // import css from './Feedback.css';
 
 class Feedback extends React.Component {
@@ -14,29 +16,12 @@ class Feedback extends React.Component {
     bad: this.props.initialValue,
   };
 
-  handleButtonGood = () => {
+  handleButtonClick = (feedbackType) => {
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
+        [feedbackType]: prevState[feedbackType] + 1,
       }
     });
-  };
-
-    handleButtonNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      }
-    });
-  };
-
-    handleButtonBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      }
-    });
-      
   };
 
   countTotalFeedback = () => {
@@ -53,19 +38,15 @@ class Feedback extends React.Component {
     return (
       <div>
         <h2>Please leave feedback</h2>
-        <div>
-          <button type="button" onClick={this.handleButtonGood}>Good</button>
-          <button type="button" onClick={this.handleButtonNeutral}>Neutral</button>
-          <button type="button" onClick={this.handleButtonBad}>Bad</button>
-        </div>
-        <div>
-          <h3>Statistics</h3>
-          <p>Good: <span>{this.state.good}</span></p>
-          <p>Neutral: <span>{this.state.neutral}</span></p>
-          <p>Bad: <span>{this.state.bad}</span></p>
-          <p>Total feedback: <span>{this.countTotalFeedback()}</span></p>
-          <p>Positive feedback percentage: <span>{this.countPositiveFeedbackPercentage()}%</span></p>
-        </div>
+        <FeedbackOptions 
+          onLeaveFeedback={this.handleButtonClick}
+        />
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          countTotalFeedback={this.countTotalFeedback}
+          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage} />
       </div>
     )
   }
