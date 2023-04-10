@@ -57,10 +57,9 @@ class Feedback extends React.Component {
               countTotalFeedback={this.countTotalFeedback}
               countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage} 
             />
-            ) : (
-          <Notification message="There is no feedback" />
-        )}
-          </Section>
+          ) : (
+            <Notification message="There is no feedback" />)}
+        </Section>
         
       </div>
     )
