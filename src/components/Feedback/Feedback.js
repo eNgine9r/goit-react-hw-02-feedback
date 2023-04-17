@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import css from './Feedback.module.css';
 import Statistics from '../Statistics/Statistics';
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import Section from '../Section/Section';
@@ -42,7 +43,7 @@ class Feedback extends React.Component {
     const totalFeedback = this.countTotalFeedback();
     
     return (
-      <div>
+      <div className={css.conteiner}>
         <Section title="Please leave feedback">
           <FeedbackOptions 
             onLeaveFeedback={this.handleButtonClick}
