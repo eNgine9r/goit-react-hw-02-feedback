@@ -3,27 +3,35 @@ import PropTypes from "prop-types";
 import css from './Statistics.module.css';
 
 
-const Statistics = ({ good, neutral, bad, countTotalFeedback, countPositiveFeedbackPercentage }) => {
-  return (
+const Statistics = ({ names, total, positivePercentage }) => {
+    return (
     <>
-      <div className={css.conteinerStatistics}>
-        <p>Good: <span>{good}</span></p>
-        <p>Neutral: <span>{neutral}</span></p>
-        <p>Bad: <span>{bad}</span></p>
-        <p>Total feedback: <span>{countTotalFeedback()}</span></p>
-        <p>Positive feedback percentage: <span>{countPositiveFeedbackPercentage()}%</span></p>
-      </div>
+      <ul className={css.conteinerStatistics}>
+        {Object.keys(names).map(name => (
+          <li key={name} className={css[name]}>
+            <p>
+              {name}: {names[name]}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <ul className={css.conteinerStatistics}>
+        <li>
+          <p>Total: {total}</p>
+        </li>
+        <li>
+          <p>Positive feedback: {positivePercentage}</p>
+        </li>
+      </ul>
     </>
-  )
+  );
 };
 
 export default Statistics;
 
 Statistics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  countTotalFeedback: PropTypes.func.isRequired,
-  countPositiveFeedbackPercentage: PropTypes.func.isRequired,
+  names: PropTypes.object.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 }
 

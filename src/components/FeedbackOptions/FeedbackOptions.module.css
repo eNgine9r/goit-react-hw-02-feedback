@@ -1,11 +1,18 @@
+.buttonItems{
+  text-transform: capitalize;
+}
+
 .buttonList{
   display: flex;
   gap: 20px;
   justify-content: center;
+  list-style-type: none;
+  padding: 0;
 }
 
 
 .button {
+  text-transform: capitalize;
   align-items: center;
   appearance: none;
   background-color: #fff;
@@ -36,6 +43,7 @@
   width: auto;
   will-change: transform,opacity;
   z-index: 0;
+  text-transform: capitalize;
 }
 
 .button:hover {
